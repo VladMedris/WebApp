@@ -11,7 +11,7 @@ using VladMedrisWebApp.Models;
 
 namespace VladMedrisWebApp.Pages.Games
 {
-    public class CreateModel : PageModel
+    public class CreateModel : GameCategoriesPageModel
     {
         private readonly VladMedrisWebApp.Data.VladMedrisWebAppContext _context;
 
@@ -22,6 +22,12 @@ namespace VladMedrisWebApp.Pages.Games
 
         public IActionResult OnGet()
         {
+            ViewData["PublisherID"] = new SelectList(_context.Set<PublishingCompany>(), "ID", "CompanyName");
+
+            var game = new Game();
+            game.GameCategories = new List<GameCategory>();
+            PopulateAssignedCategoryData(_context, game);
+
             return Page();
         }
 
@@ -29,17 +35,35 @@ namespace VladMedrisWebApp.Pages.Games
         public Game Game { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string[] selectedCategories)
         {
-            if (!ModelState.IsValid)
+            var newGame = new Game();
+            if (selectedCategories != null)
             {
-                return Page();
+                newGame.GameCategories = new List<GameCategory>();
+                foreach (var cat in selectedCategories)
+                {
+                    var catToAdd = new GameCategory
+                    {
+                        CategoryID = int.Parse(cat)
+                    };
+                    newGame.GameCategories.Add(catToAdd);
+                }
+
             }
 
-            _context.Game.Add(Game);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<Game>(
+                 newGame, "Game",
+                 i => i.Title, i => i.Studio,
+                 i => i.Price, i => i.ReleaseDate, i => i.PublisherID))
+            {
+                _context.Game.Add(newGame);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            PopulateAssignedCategoryData(_context, newGame);
+            return Page();
         }
     }
+   
 }

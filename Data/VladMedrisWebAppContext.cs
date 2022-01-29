@@ -16,5 +16,11 @@ namespace VladMedrisWebApp.Data
         }
 
         public DbSet<VladMedrisWebApp.Models.Game> Game { get; set; }
+
+        public DbSet<VladMedrisWebApp.Models.PublishingCompany> PublishingCompany { get; set; }
+
+        public DbSet<VladMedrisWebApp.Models.Category> Category { get; set; }
+
+        public DbSet<VladMedrisWebApp.Models.GameCategory> GameCategory { get; set; }
     }
 }

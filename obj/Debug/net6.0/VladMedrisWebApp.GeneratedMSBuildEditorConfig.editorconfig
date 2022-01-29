@@ -15,8 +15,48 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\tools\MediiProgramare\VladMedrisWebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Categories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Categories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Categories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Categories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/GameCategories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZUNhdGVnb3JpZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/GameCategories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZUNhdGVnb3JpZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/GameCategories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZUNhdGVnb3JpZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/GameCategories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZUNhdGVnb3JpZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/GameCategories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZUNhdGVnb3JpZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Games/Create.cshtml]
@@ -39,12 +79,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/PublishingCompanies/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHVibGlzaGluZ0NvbXBhbmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/PublishingCompanies/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHVibGlzaGluZ0NvbXBhbmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/PublishingCompanies/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHVibGlzaGluZ0NvbXBhbmllc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/PublishingCompanies/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHVibGlzaGluZ0NvbXBhbmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tools/MediiProgramare/VladMedrisWebApp/Pages/PublishingCompanies/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHVibGlzaGluZ0NvbXBhbmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/tools/MediiProgramare/VladMedrisWebApp/Pages/Shared/_ValidationScriptsPartial.cshtml]

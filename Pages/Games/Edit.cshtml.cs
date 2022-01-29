@@ -12,7 +12,7 @@ using VladMedrisWebApp.Models;
 
 namespace VladMedrisWebApp.Pages.Games
 {
-    public class EditModel : PageModel
+    public class EditModel : GameCategoriesPageModel
     {
         private readonly VladMedrisWebApp.Data.VladMedrisWebAppContext _context;
 
@@ -31,45 +31,58 @@ namespace VladMedrisWebApp.Pages.Games
                 return NotFound();
             }
 
+            Game = await _context.Game
+             .Include(b => b.PublishingCompany)
+             .Include(b => b.GameCategories).ThenInclude(b => b.Category)
+             .AsNoTracking()
+             .FirstOrDefaultAsync(m => m.ID == id);
+
             Game = await _context.Game.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Game == null)
             {
                 return NotFound();
             }
+            PopulateAssignedCategoryData(_context, Game);
+
+            ViewData["PublisherID"] = new SelectList(_context.Set<PublishingCompany>(), "ID", "CompanyName");
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id, string[] selectedCategories)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Game).State = EntityState.Modified;
+            var gameToUpdate = await _context.Game
+             .Include(i => i.PublishingCompany)
+             .Include(i => i.GameCategories)
+             .ThenInclude(i => i.Category)
+             .FirstOrDefaultAsync(s => s.ID == id);
 
-            try
+            if (gameToUpdate == null)
             {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<Game>(gameToUpdate, "Game",
+                i => i.Title, i => i.Studio,
+                i => i.Price, i => i.ReleaseDate, i => i.PublishingCompany))
+            {
+                UpdateGameCategories(_context, selectedCategories, gameToUpdate);
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GameExists(Game.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
+            UpdateGameCategories(_context, selectedCategories, gameToUpdate);
+            PopulateAssignedCategoryData(_context, gameToUpdate);
+            return Page();
+        } 
+    
         private bool GameExists(int id)
         {
             return _context.Game.Any(e => e.ID == id);

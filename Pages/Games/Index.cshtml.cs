@@ -21,10 +21,29 @@ namespace VladMedrisWebApp.Pages.Games
         }
 
         public IList<Game> Game { get;set; }
+        public GameData GameD { get; set; }
+        public int GameID { get; set; }
+        public int CategoryID { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int? id, int? categoryID)
         {
-            Game = await _context.Game.ToListAsync();
+            GameD = new GameData();
+
+            GameD.Games = await _context.Game
+                 .Include(b => b.PublishingCompany)
+                 .Include(b => b.GameCategories)
+                 .ThenInclude(b => b.Category)
+                 .AsNoTracking()
+                 .OrderBy(b => b.Title)
+                 .ToListAsync();
+
+            if (id != null)
+            {
+                GameID = id.Value;
+                Game game = GameD.Games
+                .Where(i => i.ID == id.Value).Single();
+                GameD.Categories = game.GameCategories.Select(s => s.Category);
+            }
         }
     }
 }
