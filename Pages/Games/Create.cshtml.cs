@@ -23,6 +23,7 @@ namespace VladMedrisWebApp.Pages.Games
         public IActionResult OnGet()
         {
             ViewData["PublisherID"] = new SelectList(_context.Set<PublishingCompany>(), "ID", "CompanyName");
+            ViewData["PlatformID"] = new SelectList(_context.Set<Platform>(), "ID", "PlatformName");
 
             var game = new Game();
             game.GameCategories = new List<GameCategory>();
@@ -55,7 +56,9 @@ namespace VladMedrisWebApp.Pages.Games
             if (await TryUpdateModelAsync<Game>(
                  newGame, "Game",
                  i => i.Title, i => i.Studio,
-                 i => i.Price, i => i.ReleaseDate, i => i.PublisherID))
+                 i => i.Price, i => i.ReleaseDate, 
+                 i => i.PlatformID,
+                 i => i.PublisherID))
             {
                 _context.Game.Add(newGame);
                 await _context.SaveChangesAsync();

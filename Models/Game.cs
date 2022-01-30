@@ -21,5 +21,9 @@ namespace VladMedrisWebApp.Models
         public PublishingCompany? PublishingCompany { get; set; }
 
         public ICollection<GameCategory>? GameCategories { get; set; }
+
+        public int PlatformID { get; set; }
+        public Platform? Platform { get; set; }
+
     }
 }

@@ -31,6 +31,7 @@ namespace VladMedrisWebApp.Pages.Games
 
             GameD.Games = await _context.Game
                  .Include(b => b.PublishingCompany)
+                 .Include(b => b.Platform) 
                  .Include(b => b.GameCategories)
                  .ThenInclude(b => b.Category)
                  .AsNoTracking()

@@ -34,11 +34,13 @@
                 <span asp-validation-for="Game.ReleaseDate" class="textdanger"></span>
             </div>
 
-             <div class="form-group">
             <label asp-for="Game.PublisherID" class="control-label">Game Publisher</label>
-                <select asp-for="Game.PublisherID" class="form-control" asp-items="ViewBag.PublisherID"></select>
-                <span asp-validation-for="Game.PublisherID" class="text-danger"></span>
-            </div>
+            <select asp-for="Game.PublisherID" class="form-control" asp-items="ViewBag.PublisherID"></select>
+            <span asp-validation-for="Game.PublisherID" class="text-danger"></span>
+
+            <label asp-for="Game.PlatformID" class="control-label">Platform Name</label>
+            <select asp-for="Game.PlatformID" class="form-control" asp-items="ViewBag.PlatformID"></select>
+            <span asp-validation-for="Game.PlatformID" class="text-danger"></span>
 
             <div class="form-group">
                     <div class="table">

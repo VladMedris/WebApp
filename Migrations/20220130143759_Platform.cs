@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VladMedrisWebApp.Migrations
 {
-    public partial class FixAttempt : Migration
+    public partial class Platform : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +20,19 @@ namespace VladMedrisWebApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Platform",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PlatformName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Platform", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -46,11 +59,18 @@ namespace VladMedrisWebApp.Migrations
                     Price = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PublisherID = table.Column<int>(type: "int", nullable: false),
-                    PublishingCompanyID = table.Column<int>(type: "int", nullable: true)
+                    PublishingCompanyID = table.Column<int>(type: "int", nullable: true),
+                    PlatformID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Game", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Game_Platform_PlatformID",
+                        column: x => x.PlatformID,
+                        principalTable: "Platform",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Game_PublishingCompany_PublishingCompanyID",
                         column: x => x.PublishingCompanyID,
@@ -85,6 +105,11 @@ namespace VladMedrisWebApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Game_PlatformID",
+                table: "Game",
+                column: "PlatformID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Game_PublishingCompanyID",
                 table: "Game",
                 column: "PublishingCompanyID");
@@ -110,6 +135,9 @@ namespace VladMedrisWebApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Game");
+
+            migrationBuilder.DropTable(
+                name: "Platform");
 
             migrationBuilder.DropTable(
                 name: "PublishingCompany");

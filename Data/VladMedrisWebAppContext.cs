@@ -22,5 +22,7 @@ namespace VladMedrisWebApp.Data
         public DbSet<VladMedrisWebApp.Models.Category> Category { get; set; }
 
         public DbSet<VladMedrisWebApp.Models.GameCategory> GameCategory { get; set; }
+
+        public DbSet<VladMedrisWebApp.Models.Platform> Platform { get; set; }
     }
 }

@@ -46,6 +46,9 @@ namespace VladMedrisWebApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<int>("PlatformID")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6,2)");
 
@@ -65,6 +68,8 @@ namespace VladMedrisWebApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("PlatformID");
 
                     b.HasIndex("PublishingCompanyID");
 
@@ -94,6 +99,22 @@ namespace VladMedrisWebApp.Migrations
                     b.ToTable("GameCategory");
                 });
 
+            modelBuilder.Entity("VladMedrisWebApp.Models.Platform", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("PlatformName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Platform");
+                });
+
             modelBuilder.Entity("VladMedrisWebApp.Models.PublishingCompany", b =>
                 {
                     b.Property<int>("ID")
@@ -112,9 +133,17 @@ namespace VladMedrisWebApp.Migrations
 
             modelBuilder.Entity("VladMedrisWebApp.Models.Game", b =>
                 {
+                    b.HasOne("VladMedrisWebApp.Models.Platform", "Platform")
+                        .WithMany("Games")
+                        .HasForeignKey("PlatformID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("VladMedrisWebApp.Models.PublishingCompany", "PublishingCompany")
                         .WithMany("Games")
                         .HasForeignKey("PublishingCompanyID");
+
+                    b.Navigation("Platform");
 
                     b.Navigation("PublishingCompany");
                 });
@@ -146,6 +175,11 @@ namespace VladMedrisWebApp.Migrations
             modelBuilder.Entity("VladMedrisWebApp.Models.Game", b =>
                 {
                     b.Navigation("GameCategories");
+                });
+
+            modelBuilder.Entity("VladMedrisWebApp.Models.Platform", b =>
+                {
+                    b.Navigation("Games");
                 });
 
             modelBuilder.Entity("VladMedrisWebApp.Models.PublishingCompany", b =>

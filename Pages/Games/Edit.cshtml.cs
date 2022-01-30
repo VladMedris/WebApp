@@ -46,6 +46,7 @@ namespace VladMedrisWebApp.Pages.Games
             PopulateAssignedCategoryData(_context, Game);
 
             ViewData["PublisherID"] = new SelectList(_context.Set<PublishingCompany>(), "ID", "CompanyName");
+            ViewData["PlatformID"] = new SelectList(_context.Set<Platform>(), "ID", "PlatformName");
             return Page();
         }
 
